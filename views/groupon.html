@@ -1,0 +1,73 @@
+<header class="filter">
+	<ul class="filterList">
+		<li ng-click="showFil(1)">{{filterName.city}}<i></i></li>
+		<li ng-click="showFil(2)">{{filterName.Activty}}<i></i></li>
+		<li ng-click="showFil(3)">{{filterName.general}}<i></i></li>
+	</ul>
+	<div class="filterBox" ng-show="filConA">
+		<ul class="cityList" prevent-scroll>
+			<li><p ng-click="cityFilter({filCity : '',filCityName : '全部'})">全部</p></li>
+			<li ng-repeat="city in cityList"><p ng-click="filShow($index)">{{city.cName}}</p>
+			</li>
+		</ul>
+		<div>
+			<ul class="box contacCity"   ng-repeat="city in cityList" ng-show="filShowNum == {{$index}}">
+				<li  ng-repeat="city in cityList[$index].cityList" ><p ng-click="cityFilter({filCity : city.cityId,filCityName : city.cName})">{{city.cName}}</p></li>
+			</ul>
+		</div>
+	</div>
+	<div class="filterBox" ng-show="filConB">
+		<ul class="cityList">
+			<li><p ng-click="cityFilter({filActivty : '',filActivtyName : '全部'})">全部</p></li>
+			<li ng-repeat="activty in getActivty"><p ng-click="filShow($index)">{{activty.cateName}}</p>
+			</li>
+		</ul>
+		<div>
+			<ul class="box contacCity"   ng-repeat="city in getActivty" ng-show="filShowNum == {{$index}}">
+				<li  ng-repeat="activty in getActivty[$index].cateSonList" ><p ng-click="cityFilter({filActivty : activty.cateId, filActivtyName : activty.cateName})">{{activty.cateName}}</p></li>
+			</ul>
+		</div>
+	</div>
+	<div class="filterBox" ng-show="filConC">
+		<ul class="cityList">
+			<li><p ng-click="cityFilter({filGeneral : 0,filGeneralName : '综合排序'})">综合排序</p></li>
+			<li><p ng-click="cityFilter({filGeneral : 1,filGeneralName : '销量最高'})">销量最高</p></li>
+			<li><p ng-click="cityFilter({filGeneral : 2,filGeneralName : '评分最高'})">评分最高</p></li>
+		</ul>
+	</div>
+</header>
+
+<section class="grouponMain">
+	<ul class="grouponList"  infinite-scroll='loadMore()' infinite-scroll-distance='10'>
+		<li ng-repeat="data in grouponData">
+			<a ng-click="grouponInfoAid(data.aid,data.sid)">
+				<div class="grouponCont">
+					<img class="goodsPic" ng-src={{data.img}}>
+					<div class="user">
+						<img ng-src={{data.shopLogo}}>
+						<span>{{data.shopName}}</span>
+					</div>
+					<div class="info">
+						<span><i>{{data.orderCount}}</i></span>
+						<span><i>{{data.click}}</i></span>
+						<span><i>{{data.favorCount}}</i></span>
+					</div>
+					<div class="modes">
+						<span class="bgBlue">{{data.flags[0].title}}</span>
+						<span class="bgGreen">{{data.flags[1].title}}</span>
+						<span class="bgOrange">{{data.flags[2].title}}</span>
+						<span class="bgOpc">{{data.distance}}</span>
+					</div>
+					<span class="state {{data.state | classColorBg}}">{{data.state|stateFil}}</span>
+				</div>
+				<h3 class="grouponTitle" title="">{{data.title}}</h3>
+				<p class="grouponInfo">{{data.mainSale}}</p>
+				<p class="grouponTime">提货时间：<time>{{data.tradeTime}}</time> <span>{{data.countdownTime}}</span></p>
+				<address class="grouponAddress">提货地址：<span>{{data.tradeAddress}}</span></address>
+			</a>
+		</li>
+		<li ng-show="lodPic">
+			<img style="display:block;margin:0 auto;" src="img/loading.gif"/>
+		</li>
+	</ul>
+</section>

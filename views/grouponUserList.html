@@ -1,0 +1,12 @@
+<section>
+	<ul class="grouponUserList">
+		<li ng-repeat="data in activityUserList.activtyUserList">
+			<img ng-src="{{data.pic}}">
+			<div>
+				<h3>{{data.username}}</h3>
+				<time>{{data.oTime}}</time>
+				<p>预定：{{data.productInfo}}</p>
+			</div>
+		</li>
+	</ul>
+</section>

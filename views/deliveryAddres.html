@@ -1,0 +1,12 @@
+<section>
+	<ul class="delAddressList">
+		<li ng-repeat="addressData in addressList" ng-click="chooseAddress($index)" ng-class="{true : 'active', false : ''}[addressStet == $index]">
+			<div>提货时间：{{addressData.tradeTime}}<span>102mi</span></div>
+			<h3>{{addressData.describe}}</h3>
+			<p>{{addressData.address}}</p>
+			<p>团长：{{addressData.commander}}</p>
+			<p>电话：{{addressData.tradeTime}}</p>
+		</li>
+	</ul>
+    <a class="btn" onClick="javascript: history.go(-1);">确定</a>
+</section>

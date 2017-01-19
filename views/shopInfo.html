@@ -1,0 +1,25 @@
+<section>
+	<div class="shopsInfo">
+		<img class="shopsBgPic" ng-src="{{shopDetails.img}}">
+		<dl>
+			<dd>
+				<img ng-src="{{shopDetails.img}}">
+			</dd>
+			<dt>{{shopDetails.sName}}</dt>
+			<dt>创建时间：{{shopDetails.createTime}}</dt>
+			<dt ng-bind-html="shopDetails.star | shopStar">
+			</dt>
+			<dt><span class="wChat" ng-show="shopDetails.weixinIdentify == '1'">微信认证</span><span class="ePt" ng-show="shopDetails.siteIdentify== '1'">平台认证</span></dt>
+		</dl>
+	</div>
+	<div class="shopsTel">
+		<a ng-href="tel:{{shopDetails.tel}}">{{shopDetails.tel}}</a>
+	</div>
+	<div class="shopsText">
+		<p>{{shopDetails.tip}}</p>
+	</div>
+	<div class="shops">
+		<h3>店铺描述</h3>
+		<p>{{shopDetails.describe}}</p>
+	</div>
+</section>

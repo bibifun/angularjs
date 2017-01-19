@@ -1,0 +1,37 @@
+/*---清除默认样式---*/
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, form, input, textarea {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+}
+img {
+    border: 0 none;
+}
+a, a:visited {
+    text-decoration: none;
+    color: #fff;
+    outline: 0 none;
+}
+ol li, ul li {
+    list-style: none;
+}
+input {
+    border: 0 none;
+}
+.clearfix {
+    /* 清除浮动影响 */
+    *zoom: 1;
+}
+.clearfix:after {
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    content: ".";
+    font-size: 0;
+}
+a:focus, input:focus, p:focus, div:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

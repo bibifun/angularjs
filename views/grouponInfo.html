@@ -1,0 +1,66 @@
+<header class="groInHead">
+	<dl class="groUserInfo">
+		<dd>
+			<a href="#shopInfo">
+				<img ng-src="{{shopDetails.img}}">
+				<span>{{shopDetails.sName}}</span>
+			</a>
+		</dd>
+		<dt>
+			<a>+关注</a>
+			<a>联系Ta</a>
+		</dt>
+	</dl>
+</header>
+<section>
+	<div class="goodsText">
+		<p>{{grouponInfoData.notice}}</p>
+	</div>
+	<div class="deadline">
+		<p>预定截止：<span>{{grouponInfoData.trade.destineEndTime}}</span></p>
+	</div>
+	<div class="delAddress" ng-click="$location.path('delAddressList')">
+		<h3>选择您的收货地址</h3>
+		<ul class="addressList">
+			<li>提货时间：<span>{{addressList[addressStet].tradeTime}}</span></li>
+			<li>{{addressList[addressStet].describe}}</li>
+			<li>{{addressList[addressStet].address}}</li>
+		</ul>
+	</div>
+
+	<div class="joinReserve" ng-click="$location.path('grouponUserList')">
+		<h3>参加预定{{activityUserList.totalCount}}人：</h3>
+		<ul class="joinUser">
+			<li ng-repeat="data in activityUserList.activtyUserList" ><img ng-src="{{data.pic}}"></li>
+		</ul>
+	</div>
+	<div class="goodsListBox">
+		<ul class="goodsList">
+			<li ng-repeat="shopsData in goodsList">
+				<img class="goodsPic" ng-src="{{shopsData.img}}">
+				<div class="goodsPrice">
+					<h3>{{shopsData.pName}}</h3>
+					<p>已售：<span>{{shopsData.saleCount}}</span>剩余：<span>充足</span></p>
+					<p>包装：<span>40个/包</span></p>
+					<p>团购价:<i>${{shopsData.price}}</i></p>
+				</div>
+				<div class="goodsNum">
+					<span ng-click="decrease($index)" ng-hide="shopsData.num ==0"></span>
+					<span  ng-hide="shopsData.num ==0">{{shopsData.num}}</span>
+					<span ng-click="addGoods($index)"></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- <div class="goodsPic">
+	</div> -->
+</section>
+<footer class="bottomBox">
+	<div class="grouponBottom">
+		<img class="shopCar" src="img/shopCar.png"/>
+		<dl>
+			<dd><p ng-show="comes == 0">购物车是空的</p><p ng-hide="comes == 0">合计{{comes | currency}}</p></dd>
+			<dt><a 	ng-class="{true : 'active', false : ''}[comes != 0]" ng-click="placeOrder()">立即抢购</a></dt>
+		</dl>
+	</div>
+</footer>

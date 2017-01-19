@@ -1,0 +1,47 @@
+<section>
+    <div class="shopBox">
+        <img ng-src="{{shopDetails.img}}">
+        <h3>{{shopDetails.sName}}</h3>
+    </div>
+    <div class="orderBox">
+        <span>团购名称</span> 庄妈妈沪上美食
+    </div>
+    <div class="delAddress"  ng-click="$location.path('delAddressList');">
+        <h3>选择您的收货地址</h3>
+        <ul class="addressList">
+            <li>提货时间：<span>{{addressList[addressStet].tradeTime}}</span></li>
+            <li>{{addressList[addressStet].describe}}</li>
+            <li>{{addressList[addressStet].address}}</li>
+        </ul>
+    </div>
+    <div class="orderBox">
+        <span>支付方式</span>现金
+    </div>
+    <div class="orderBox">
+        <span>联系电话</span><a ng-href="tel:{{shopDetails.tel}}">{{shopDetails.tel}}</a>
+    </div>
+    <div class="orderGoodList">
+        <h3>商品清单</h3>
+        <table>
+            <tr ng-repeat="data in shopList">
+                <th>{{data.pName}}</th>
+                <td>{{data.price | currency}} <i> X </i> {{data.num}} <i> = </i> <i>{{data.price*data.num | currency}}</i></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>合计金额：<span>{{goodsComes | currency}}</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="remarkBox">
+        <textarea ng-model="remarkText" placeholder="请输入您的特殊要求，有些要求小店不一定能满足，望能理解！"></textarea>
+    </div>
+    <footer class="bottomBox">
+        <div class="grouponBottom">
+            <dl>
+                <dd><p>合计金额：<span>{{goodsComes | currency}}</span></p></dd>
+                <dt><a class="active" ng-click="subOrder()">确认下单</a></dt>
+            </dl>
+        </div>
+    </footer>
+</section>

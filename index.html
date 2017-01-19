@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" style="font-size: 100px;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no,telephone=no,address=no">
+<title>海外E生活</title>
+<link rel="stylesheet" type="text/css" href="styles/base.css"/>
+<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <script type="text/javascript">
+        var scale = 1 / devicePixelRatio;
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+		//判断手机横竖屏状态：
+		function hengshuping(){
+		  	if(window.orientation==180||window.orientation==0){
+		    	document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+		   }
+			if(window.orientation==90||window.orientation==-90){
+		        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+		    }
+		 }
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+    </script>
+</head>
+<body>
+<div class="wrap" ng-view>
+</div>
+<script src="scripts/vendor/jquery.min.1.7.js"></script>
+<script src="scripts/vendor/angular.min.js"></script>
+<script src="scripts/vendor/angular-route.min.js"></script>
+<script src="scripts/vendor/angular-animate.min.js"></script>
+<script src="scripts/vendor/angular-resource.min.js"></script>
+<script src="scripts/vendor/ng-infinite-scroll.js"></script>
+<script src="scripts/vendor/angular-sanitize.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/directives/myDirective.js"></script>
+<script src="scripts/filters/myFilter.js"></script>
+<script src="scripts/services/myService.js"></script>
+</body>
+</html>
